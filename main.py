@@ -1,7 +1,7 @@
 import math
 import sys
 
-sys.setrecursionlimit(1500)
+sys.setrecursionlimit(15000)
 
 def prime_factors(n):
 
@@ -43,10 +43,27 @@ def is_perfect_root(n, exponent):
 
     return True
 
+def list_sum_zero(list, number):
+    zero_list = []
+    for i in range(number):
+        zero_list.append(0)
 
-file = open(r"C:\Users\Gebruiker\Desktop\python logs\2.txt", "w")
+    if list == zero_list:
+        return True
+    else:
+        return False
+
+
+file = open(r"/Users/kadripoldmaa/Desktop/python_logs/5_5.txt", "w")
 
 def combination_finder(list, number_of_components, range_of_numbers, power, n):
+
+    # if list components are 1 1 1 then print done
+    if list_sum_zero(list, number_of_components):
+        file = open(r"/Users/kadripoldmaa/Desktop/python_logs/5_5.txt", "a")
+        file.write("cycle completed!!")
+        return
+    
 
     if len(list) == number_of_components:
 
@@ -58,7 +75,7 @@ def combination_finder(list, number_of_components, range_of_numbers, power, n):
         if is_perfect_root(exponential_number, power):
 
             if list[1] != 0:
-                file = open(r"C:\Users\Gebruiker\Desktop\python logs\2.txt", "a")
+                file = open(r"/Users/kadripoldmaa/Desktop/python_logs/5_5.txt", "a")
                 example_string = str(power)
                 for j in range(number_of_components):
                     SUP = str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")
@@ -82,4 +99,4 @@ def combination_finder(list, number_of_components, range_of_numbers, power, n):
     return
 
 
-combination_finder([], 2, 100, 2, 0)
+combination_finder([], 5, 40, 5, 0)
